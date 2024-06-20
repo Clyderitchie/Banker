@@ -1,0 +1,16 @@
+#navbar {
+    width: 80%;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 20%;
+    border: .5px solid black;
+    padding: 1%;
+}
+
+@media screen and (max-width: 982px){
+    #navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

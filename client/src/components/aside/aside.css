@@ -1,0 +1,24 @@
+#aside {
+    max-width: 20%;
+    border: 1px solid black;
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 1%;
+}
+
+#asideList {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+}
+
+.asideItem {
+    margin-bottom: 120%;
+    white-space: nowrap;
+}
