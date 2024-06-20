@@ -1,0 +1,12 @@
+#searchReturns {
+    position: fixed;
+    top: 55%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 55%;
+    min-width: 55%;
+}
