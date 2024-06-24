@@ -4,16 +4,17 @@ import { useParams } from "react-router";
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CLIENT } from '../../utils/queries';
 
-// import './customerPage.css';
+import './customerPage.css';
 
 import Nav from '../../components/nav/nav';
 import Aside from '../../components/aside/aside';
 
 // TODO:
 //  Refactor the layout of the page using Bootstrap (Make it dynamic)
-// Make sure all the Client's data can be rendered to the page. 
+//  Restyle the customer info section that is at top of the page.
+//  Refactor props passed to Aside and nav to render the Tellers Name on top of the Aside like the home page
 
-function CustomerInfo({ tellerId }) {
+function CustomerInfo() {
     const { clientId } = useParams();
     const [clients, setClients] = useState([]);
 
@@ -28,61 +29,53 @@ function CustomerInfo({ tellerId }) {
         getClient();
     }, [clientId])
 
-    console.log('CustomerInfo clientId: ', data);
-
     return (
         <>
-            <Nav tellerId={tellerId} />
+            <Nav />
             <Aside />
-            <div id='clientInfo'>
-                <h1 id='customerInfo'>Customer Information</h1>
-                {clients.map(client => (
-                    <div id='clientPersonalInfo' key={client._id}>
-                        <div id='clientInfoBox'>
-                            <div id='clientBox'>
-                                <div id='clientName'>
-                                    <h4>Name:</h4>
-                                    <p id='name' className="ms-3">{client.firstName} {client.lastName}</p>
-                                </div>
-                                <div id='clientBirthday'>
-                                    <h4>Birthday:</h4>
-                                    <p id='birthday' className="ms-3">{client.birthday}</p>
-                                </div>
-                                <div id='clientAddress'>
-                                    <h4>Address:</h4>
-                                    <p id='address' className="ms-3">{client.address}</p>
-                                </div>
-                            </div>
-                            <div id='clientBox1'>
-                                <div id='clientPhone'>
-                                    <h4>Phone number:</h4>
-                                    <p id='phone' className="ms-3">{client.phoneNumber} </p>
-                                </div>
-                                <div id='clientTin'>
-                                    <h4>SSN/TIN:</h4>
-                                    <p id='tin' className="ms-3">{client.tin}</p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div id='clientAccounts'>
-                            {client.accounts.map(account => (
-                                <div className="dropdown">
-                                    <button className="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Accounts:
-                                    </button>
-                                    <ul className="dropdown-menu w-50">
-                                        <li key={account._id}>
-                                            Account Type: {account.accountType}
-                                        </li>
-                                        <li key={account._id}>
-                                            Account balance: {account.balance}
-                                        </li>
-                                    </ul>
+            <div id='clientInfo' className="container">
+                <div className="row w-100 d-flex justify-content-center align-items-center">
+                    <div className="col-12 mb-4">
+                        {clients.map(client => (
+                            <div className="mt-2" key={client.id}>
+                                <div className="d-flex justify-content-center">
+                                    <h4 className="mt-3 fs-1">{client.firstName} {client.lastName}</h4>
                                 </div>
-                            ))}
-                        </div>
-                        {/* <div id='loanInfo'>
+                                <div className="mt-3 d-flex flex-row align-items-center justify-content-between border-bottom border-dark">
+                                    <h3 className="ms-3">Address:</h3>
+                                    <p className="ms-3">{client.address}</p>
+
+                                    <h3 className="ms-3">SSN/TIN:</h3>
+                                    <p className="ms-3 ">{client.tin}</p>
+
+                                    <h3 className="ms-3">Birthday</h3>
+                                    <p className="ms-3">{client.birthday}</p>
+
+                                    <h3 className="ms-3">Phone</h3>
+                                    <p className="ms-3">{client.phoneNumber}</p>
+                                </div>
+                                <div id='clientAccounts' className="mt-5">
+                                    <h2 className="mb-5">Deposit Accounts</h2>
+                                    {client.accounts.map(account => (
+                                        <div className="mt-2 d-flex justify-content-evenly align-items-center">
+                                            <h3>Account Name: {account.accountType}</h3>
+                                            <h4>Current Balance: {account.balance}</h4>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            {/*
+                        <div id='loanInfo'>
                             <p>Loans:</p>
                             {client.loans.map(loan => (
                                 <div className="dropdown">
@@ -104,10 +97,10 @@ function CustomerInfo({ tellerId }) {
                         </div>
                         <div id='serviceInfo' >
                             <p>Services</p>
-                        </div> */}
+                        </div>
                     </div>
                 ))}
-            </div>
+            </div> */}
         </>
     )
 };
