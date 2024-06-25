@@ -4,6 +4,8 @@ import { QUERY_TELLER } from '../../utils/queries';
 
 import './aside.css';
 
+
+
 function Aside({ tellerId }) {
 
     const { data } = useQuery(QUERY_TELLER, {
