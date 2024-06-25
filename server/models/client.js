@@ -1,5 +1,12 @@
 const { Schema, model } = require('mongoose');
 
+// TODO
+// Data to add to client Schema
+// Date accounts where opened
+// When client started banking with bank
+// Security Questions
+
+
 const ClientSchema = new Schema(
     {
         firstName: {

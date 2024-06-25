@@ -13,6 +13,9 @@ import Aside from '../../components/aside/aside';
 //  Refactor the layout of the page using Bootstrap (Make it dynamic)
 //  Restyle the customer info section that is at top of the page.
 //  Refactor props passed to Aside and nav to render the Tellers Name on top of the Aside like the home page
+//  Factor in date open for accounts
+//  Factor data for when client began banking at bank
+//  Security questions
 
 function CustomerInfo() {
     const { clientId } = useParams();
@@ -32,28 +35,25 @@ function CustomerInfo() {
     return (
         <>
             <Nav />
-            <Aside />
+            <Aside clientId={clientId}/>
 
             <div id='clientInfo' className="container">
                 <div className="row w-100 d-flex justify-content-center align-items-center">
                     <div className="col-12 mb-4">
                         {clients.map(client => (
                             <div className="mt-2" key={client.id}>
-                                <div className="d-flex justify-content-center">
-                                    <h4 className="mt-3 fs-1">{client.firstName} {client.lastName}</h4>
+                                <div className="d-flex justify-content-center border-bottom border-dark mb-3">
+                                    <h4 className="mt-3 mb-3 fs-1">{client.firstName} {client.lastName}</h4>
                                 </div>
-                                <div className="mt-3 d-flex flex-row align-items-center justify-content-between border-bottom border-dark">
-                                    <h3 className="ms-3">Address:</h3>
-                                    <p className="ms-3">{client.address}</p>
-
-                                    <h3 className="ms-3">SSN/TIN:</h3>
-                                    <p className="ms-3 ">{client.tin}</p>
-
-                                    <h3 className="ms-3">Birthday</h3>
-                                    <p className="ms-3">{client.birthday}</p>
-
-                                    <h3 className="ms-3">Phone</h3>
-                                    <p className="ms-3">{client.phoneNumber}</p>
+                                <div className="col-12 d-flex justify-content-center mt-4">
+                                    <div className="col-6">
+                                        <h3 className="ms-3">Address: {client.address}</h3>
+                                        <h3 className="ms-3 mt-3">SSN/TIN: {client.tin}</h3>
+                                    </div>
+                                    <div className="col-6">
+                                        <h3 className="ms-3 mt-3">Birthday: {client.birthday}</h3>
+                                        <h3 className="ms-3 mt-3">Phone: {client.phoneNumber}</h3>
+                                    </div>
                                 </div>
                                 <div id='clientAccounts' className="mt-5">
                                     <h2 className="mb-5">Deposit Accounts</h2>
@@ -70,9 +70,6 @@ function CustomerInfo() {
                     </div>
                 </div>
             </div>
-
-
-
 
             {/*
                         <div id='loanInfo'>
