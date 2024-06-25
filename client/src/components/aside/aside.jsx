@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_TELLER } from '../../utils/queries';
 
 import './aside.css';
 
+// TODO:
+//  Add a link for clients loans and another one for clients services pages. 
 
-
-function Aside({ tellerId }) {
+function Aside({ tellerId, clientId }) {
 
     const { data } = useQuery(QUERY_TELLER, {
         variables: { tellerId },
@@ -28,7 +30,12 @@ function Aside({ tellerId }) {
                         </h2>
                         <ul id='asideList' className='text-decoration-none mt-5'>
                             <li className="asideItem text-decoration-none">Customer Information</li>
-                            <li className="asideItem text-decoration-none">Accounts</li>
+                            <li className="asideItem text-decoration-none">
+                                <Link className='text-decoration-none text-black' to={`/accounts/${clientId}`}>
+                                    Accounts
+                                </Link>
+
+                            </li>
                             <li className="asideItem text-decoration-none">Loans</li>
                             <li className="asideItem text-decoration-none">Services</li>
                         </ul>
