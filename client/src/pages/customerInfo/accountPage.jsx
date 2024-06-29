@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CLIENT } from '../../utils/queries';
 
+import './customerPage.css';
+
 import Nav from "../../components/nav/nav";
 import Aside from "../../components/aside/aside";
 
@@ -34,17 +36,24 @@ function Accounts() {
             <Nav />
             <Aside />
 
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
+            <div id='accountInfoContainer' className="container">
+                <div className="row w-100 d-flex justify-content-center align-items-center">
+                    <div className="col-12 mb-4">
                         {clientAccount.map(account => (
                             <div className="col-12" key={clientAccount.id}>
-                                {account.firstName}
-                            {account.accounts.map(clientAccount => (
-                               <div className="col-12" key={clientAccount.id}>
-                                 {clientAccount.accountType} 
-                               </div>
-                            ))}
+                                <h2 className="text-center border-bottom border-dark mb-3 p-1">
+                                    {account.firstName} {account.lastName}
+                                </h2>
+                                {account.accounts.map(clientAccount => (
+                                    <div className="col-12 mt-5" key={clientAccount.id}>
+                                        <h3 className="text-center">
+                                            {clientAccount.accountType}
+                                        </h3>
+                                        <h3 className="d-flex justify-content-start align-items-center">
+                                            Available Balance: {clientAccount.balance}
+                                        </h3>
+                                    </div>
+                                ))}
                             </div>
                         ))}
                     </div>

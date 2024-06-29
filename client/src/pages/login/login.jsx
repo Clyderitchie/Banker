@@ -32,7 +32,7 @@ const Login = ({ handleLogin }) => {
 
     return (
         <>
-                <div className="container d-flex justify-content-center align-items-center mt-5">
+                <div id='loginContainer' className="container d-flex justify-content-center align-items-center mt-5">
                     <div className="d-flex justify-content-center w-100 mt-5">
                         <div className="col-8 mt-5">
                             <div className="d-flex justify-content-center">
