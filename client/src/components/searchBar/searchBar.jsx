@@ -7,10 +7,13 @@ import { QUERY_FIRSTNAME, QUERY_LASTNAME, QUERY_TIN } from '../../utils/queries'
 import './search.css';
 
 import SearchResults from "../results/searchResults";
+import { set } from "date-fns";
 
 function SearchBar({ tellerId }) {
     const [searchQuery, setSearchQuery] = useState('');
     const [clients, setClients] = useState([]);
+    const [hasSearched, setHasSearched] = useState(false);
+
     const [getClientByFirstName, { error: firstNameError, loading: firstNameLoading, data: firstNameData }] = useLazyQuery(QUERY_FIRSTNAME);
     const [getClientByLastName, { error: lastNameError, loading: lastNameLoading, data: lastNameData }] = useLazyQuery(QUERY_LASTNAME);
     const [getClientByTin, { error: tinError, loading: tinLoading, data: tinData }] = useLazyQuery(QUERY_TIN);
@@ -35,19 +38,15 @@ function SearchBar({ tellerId }) {
 
     const handleSearch = () => {
         if (searchQuery.trim() !== '') {
-            // Search by first name
+            setHasSearched(true)
             getClientByFirstName({ variables: { firstName: searchQuery.trim() } });
-            // Search by last name
             getClientByLastName({ variables: { lastName: searchQuery.trim() } });
-            // Search by tin
             getClientByTin({ variables: { tin: searchQuery.trim() } });
         } else {
-            // Clear search results if search query is empty
             setClients([]);
+            setHasSearched(false)
         }
     };
-
-    // console.log('Search data returned: ', tinData)
 
     return (
         <>
@@ -64,9 +63,11 @@ function SearchBar({ tellerId }) {
                 </div>
             </div>
 
-            <div id='searchReturns' className="d-flex justify-content-center align-items-center mt-5">
-                <SearchResults searchQuery={searchQuery} clients={clients} />
-            </div>
+            {hasSearched && (
+                <div id='searchReturns' className="d-flex justify-content-center align-items-center mt-5">
+                    <SearchResults searchQuery={searchQuery} clients={clients} />
+                </div>
+            )}
         </>
     )
 };
