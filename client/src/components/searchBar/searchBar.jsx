@@ -52,12 +52,12 @@ function SearchBar({ tellerId }) {
     return (
         <>
 
-            <div className="container w-75 me-5 mt-5 mb-5">
+            <div id='searchContainer' className="container">
                 <div className="row mt-5">
                     <div className="col-12 mt-5">
                         <div id='search' className="input-group mb-3 mt-5">
                             <button id='searchBtn' className="btn btn-dark me-2 rounded-pill" type="submit" onClick={handleSearch}>Search</button>
-                            <input type="text" className="form-control rounded-pill w-50" placeholder="Search" aria-label="Example text with button addon" aria-describedby="button-addon1"
+                            <input type="text" className="form-control rounded-pill w-25" placeholder="Search" aria-label="Example text with button addon" aria-describedby="button-addon1"
                                 value={searchQuery} onChange={(e) => { setSearchQuery(e.target.value) }} />
                         </div>
                     </div>

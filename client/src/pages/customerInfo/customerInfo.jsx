@@ -37,7 +37,7 @@ function CustomerInfo() {
             <Nav />
             <Aside clientId={clientId}/>
 
-            <div id='clientInfo' className="container">
+            <div id='clientInfoContainer' className="container w-50">
                 <div className="row w-100 d-flex justify-content-center align-items-center">
                     <div className="col-12 mb-4">
                         {clients.map(client => (
@@ -54,15 +54,6 @@ function CustomerInfo() {
                                         <h3 className="ms-3 mt-3">Birthday: {client.birthday}</h3>
                                         <h3 className="ms-3 mt-3">Phone: {client.phoneNumber}</h3>
                                     </div>
-                                </div>
-                                <div id='clientAccounts' className="mt-5">
-                                    <h2 className="mb-5">Deposit Accounts</h2>
-                                    {client.accounts.map(account => (
-                                        <div className="mt-2 d-flex justify-content-evenly align-items-center">
-                                            <h3>Account Name: {account.accountType}</h3>
-                                            <h4>Current Balance: {account.balance}</h4>
-                                        </div>
-                                    ))}
                                 </div>
                             </div>
 

@@ -17,11 +17,10 @@ function SearchResults({ searchQuery, clients }) {
     return (
         <>
 
-            <div className="container border border-primary">
+            <div id='resultContainer' className="container">
                 <div className="row">
-                    <div className="col-12 d-flex justify-content-center align-items-center">
-                        <h4>Name</h4>
-                        <h4>Address</h4>
+                    <div className="col-12 d-flex justify-content-center align-items-center w-100">
+                        <h4>Customers</h4>
                     </div>
                     <div className="col-10 mt-3">
                         {filteredClients.map((client) => (
