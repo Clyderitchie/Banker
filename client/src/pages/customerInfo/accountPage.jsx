@@ -52,6 +52,16 @@ function Accounts() {
                                     </div>
                                 ))}
                             </div>
+
+                            <div className="card mt-4 mb-4">
+                                <h5 className="fs-2 mt-2 text-center">Transactions</h5>
+                                <div className="card-body">
+                                    {/* TODO:   
+                                        Move into the map so that it will map the accounts transactions once they exist 
+                                        Work on a way to make it pass the accounts Id to this so that it renders only that accounts transaction history
+                                   */}
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
