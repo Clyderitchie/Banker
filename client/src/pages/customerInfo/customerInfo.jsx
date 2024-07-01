@@ -40,7 +40,7 @@ function CustomerInfo() {
             <div id='clientInfoContainer' className="container-lg">
                 <div className="row">
                     {clients.map(client => (
-                        <div className="col-md-12 offset-md-2 border border-primary" key={client.id}>
+                        <div className="col-md-12 offset-md-2" key={client.id}>
                             <h4 className="mt-3 mb-3 fs-1 text-center">{client.firstName} {client.lastName}</h4>
                             <div className="card mt-5">
                                 <div className="card-body">

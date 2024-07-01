@@ -36,27 +36,24 @@ function Accounts() {
             <Nav />
             <Aside />
 
-            <div id='accountInfoContainer' className="container">
-                <div className="row w-100 d-flex justify-content-center align-items-center">
-                    <div className="col-12 mb-4">
-                        {clientAccount.map(account => (
-                            <div className="col-12" key={clientAccount.id}>
-                                <h2 className="text-center border-bottom border-dark mb-3 p-1">
-                                    {account.firstName} {account.lastName}
-                                </h2>
+            <div id='accountInfoContainer' className="container-lg">
+                <div className="row">
+                    {clientAccount.map(account => (
+                        <div className="col-md-12 offset-md-2 border border-primary" key={clientAccount.id}>
+                            <h2 className="text-center mb-3 p-1 fs-1">
+                                {account.firstName} {account.lastName}
+                            </h2>
+                            <div className="card mt-4 mb-4">
+                                <h5 className="fs-2 mt-2 text-center">Deposit Accounts</h5>
                                 {account.accounts.map(clientAccount => (
-                                    <div className="col-12 mt-5" key={clientAccount.id}>
-                                        <h3 className="text-center">
-                                            {clientAccount.accountType}
-                                        </h3>
-                                        <h3 className="d-flex justify-content-start align-items-center">
-                                            Available Balance: {clientAccount.balance}
-                                        </h3>
+                                    <div className="card-body" key={clientAccount.id}>
+                                        <h6 className="fs-3">Account Type: {clientAccount.accountType}</h6>
+                                        <p className="fs-3">Balance: {clientAccount.balance}</p>
                                     </div>
                                 ))}
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </>
